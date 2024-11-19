@@ -16,21 +16,21 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   int _currentPage = 0;
 
   final List<OnboardingPage> _pages = [
-    OnboardingPage(
+    const OnboardingPage(
       title: 'Track your and your baby\'s\nhealth with ease',
       description:
           'Your personal health assistant will help you\nkeep track of your health and your baby\'s growth',
       imagePath: 'assets/images/Pregnant_woman.png',
       buttonText: 'Continue',
     ),
-    OnboardingPage(
+    const OnboardingPage(
       title: 'Get personalized\nhealth tips and\nreminders',
       description:
           'Get daily health tips and reminders to help\nyou stay healthy throughout your pregnancy',
       imagePath: 'assets/images/Pregnant_woman.png',
       buttonText: 'Continue',
     ),
-    OnboardingPage(
+    const OnboardingPage(
       title: 'Get to interact with\nother expecting mothers',
       description:
           'Join a community of expecting mothers\nand share your experiences with each other',

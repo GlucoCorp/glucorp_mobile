@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../widgets/login.dart';
 import '../widgets/text_field.dart';
+import '../widgets/material_app.dart';
 
 class Login extends StatelessWidget {
   const Login ({super.key});
@@ -71,7 +72,9 @@ class Login extends StatelessWidget {
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/forgot-password');
+                  },
                   child: Text(
                     'Forgot Password?',
                     style: GoogleFonts.poppins(
@@ -83,7 +86,9 @@ class Login extends StatelessWidget {
               ),
               const SizedBox(height: 24),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/home');
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFFF06292),
                   foregroundColor: Colors.white,
