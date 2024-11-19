@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:glucorp_mobile/routes/email_verification.dart';
+import 'package:glucorp_mobile/routes/login.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SignUp extends StatelessWidget {
@@ -131,7 +133,9 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
               const SizedBox(height: 24),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+            
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.pink[300],
                   padding: const EdgeInsets.all(16),
@@ -156,7 +160,12 @@ class _SignUpPageState extends State<SignUpPage> {
                     style: GoogleFonts.poppins(),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Login()),
+                    );
+                    },
                     child: Text(
                       'Sign in',
                       style: GoogleFonts.poppins(

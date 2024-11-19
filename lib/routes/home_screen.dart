@@ -1,22 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../widgets/metric_chart.dart';
 import '../widgets/feature_card.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  String gender = 'female'; // Change this to 'male' or 'female' dynamically
+  int _currentIndex = 0; // Tracks the selected index of the BottomNavigationBar
+
+  @override
   Widget build(BuildContext context) {
+    final String avatarPath = gender == 'male'
+        ? 'assets/images/man.jpeg'
+        : 'assets/images/woman.jpeg';
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Maternal Health Dashboard'),
+        title: Text(
+          'Home',
+          style: GoogleFonts.poppins(
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         actions: [
           IconButton(
-            icon: const CircleAvatar(
-              backgroundImage: NetworkImage('https://placeholder.com/user.jpg'),
+            icon: CircleAvatar(
+              backgroundImage: AssetImage(avatarPath),
             ),
-            onPressed: () {},
+            onPressed: () {
+              // Handle avatar click (optional functionality)
+              print('Avatar clicked for $gender');
+            },
           ),
         ],
       ),
@@ -25,36 +46,12 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
+            Text(
               'Welcome back, Sarah!',
-              style: TextStyle(
+              style: GoogleFonts.poppins(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
-            ),
-            const SizedBox(height: 20),
-            const HealthMetricChart(
-              title: 'Blood Glucose Levels',
-              data: [
-                FlSpot(0, 95),
-                FlSpot(1, 100),
-                FlSpot(2, 98),
-                FlSpot(3, 102),
-                FlSpot(4, 97),
-              ],
-              unit: 'mg/dL',
-            ),
-            const SizedBox(height: 20),
-            const HealthMetricChart(
-              title: 'Blood Pressure',
-              data: [
-                FlSpot(0, 120),
-                FlSpot(1, 118),
-                FlSpot(2, 122),
-                FlSpot(3, 119),
-                FlSpot(4, 121),
-              ],
-              unit: 'mmHg',
             ),
             const SizedBox(height: 20),
             GridView.count(
@@ -67,27 +64,77 @@ class HomeScreen extends StatelessWidget {
                 FeatureCard(
                   title: 'Baby Development',
                   icon: Icons.child_care,
-                  color: Colors.blue,
+                  color: Color.fromRGBO(240, 98, 146, 1),
                 ),
                 FeatureCard(
                   title: 'Community',
                   icon: Icons.people,
-                  color: Colors.green,
+                  color: Color.fromRGBO(240, 98, 146, 1),
                 ),
                 FeatureCard(
-                  title: 'Chat with Doctor',
+                  title: 'Chatbot',
                   icon: Icons.chat,
-                  color: Colors.purple,
+                  color: Color.fromRGBO(240, 98, 146, 1),
                 ),
                 FeatureCard(
-                  title: 'Health Records',
-                  icon: Icons.folder,
-                  color: Colors.orange,
+                  title: 'Blood Pressure',
+                  icon: Icons.favorite,
+                  color: Color.fromRGBO(240, 98, 146, 1),
                 ),
+                FeatureCard(
+                  title: 'Blood Glucose', 
+                  icon: Icons.line_axis, 
+                  color: Color.fromRGBO(240, 98, 146, 1)
+                )
               ],
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: (int index) {
+          setState(() {
+            _currentIndex = index;
+          });
+          // Handle navigation here based on the index
+          print('Selected index: $index');
+        },
+        type: BottomNavigationBarType.fixed,
+        selectedLabelStyle: GoogleFonts.poppins(
+          fontSize: 12,
+          fontWeight: FontWeight.w500,
+        ),
+        unselectedLabelStyle: GoogleFonts.poppins(
+          fontSize: 12,
+          fontWeight: FontWeight.w400,
+        ),
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite),
+            label: 'Blood Pressure',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.line_axis),
+            label: 'Blood Glucose',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.chat),
+            label: 'Chatbot'
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.child_care),
+            label: 'Baby Development'
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.people),
+            label: 'Community'
+          ),
+        ],
       ),
     );
   }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:glucorp_mobile/routes/forgot_password.dart';
+import 'package:glucorp_mobile/routes/home_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../widgets/login.dart';
 import '../widgets/text_field.dart';
@@ -72,7 +74,10 @@ class Login extends StatelessWidget {
                 alignment: Alignment.centerRight,
                 child: TextButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/forgot-password');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const ForgotPasswordScreen()),
+                    );
                   },
                   child: Text(
                     'Forgot Password?',
@@ -86,7 +91,10 @@ class Login extends StatelessWidget {
               const SizedBox(height: 24),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, '/home');
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const HomeScreen()),
+                    );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFFF06292),
