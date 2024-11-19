@@ -3,6 +3,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../widgets/metric_chart.dart';
 import '../widgets/feature_card.dart';
+import '../routes/profile.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -36,7 +37,10 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             onPressed: () {
               // Handle avatar click (optional functionality)
-              print('Avatar clicked for $gender');
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ProfileScreen())
+              );
             },
           ),
         ],
