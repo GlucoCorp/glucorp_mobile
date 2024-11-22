@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) => const HomeScreen(), // Define the Home screen route
         '/forgot-password': (context) => const ForgotPasswordScreen(), // Define the Forgot Password screen route
         //'/email-verification': (context) => const VerificationScreen(), // Define the Email Verification screen route
+        
       },
       // Optional: Handle undefined routes
       onUnknownRoute: (settings) => MaterialPageRoute(

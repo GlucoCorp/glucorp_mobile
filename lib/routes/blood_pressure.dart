@@ -2,13 +2,24 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:fl_chart/fl_chart.dart';
+import '../widgets/navigation_config.dart';
 
 class BloodPressurePage extends StatefulWidget {
   @override
+  
   _BloodPressurePageState createState() => _BloodPressurePageState();
 }
 
+class BPReading {
+  final DateTime date;
+  final int systolic;
+  final int diastolic;
+
+  BPReading(this.date, this.systolic, this.diastolic);
+}
+
 class _BloodPressurePageState extends State<BloodPressurePage> {
+  int _currentIndex = 0;
   final List<BPReading> readings = [
     BPReading(DateTime.now().subtract(Duration(days: 6)), 120, 80),
     BPReading(DateTime.now().subtract(Duration(days: 5)), 118, 79),
@@ -162,7 +173,8 @@ class _BloodPressurePageState extends State<BloodPressurePage> {
         backgroundColor: Colors.pink[300],
         child: Icon(Icons.add),
       ),
-    );
+       bottomNavigationBar: NavigationConfig().buildBottomNav(context),
+    );  
   }
 
   Widget _buildReadingValue(String value, String label, Color color) {
@@ -183,21 +195,8 @@ class _BloodPressurePageState extends State<BloodPressurePage> {
           ),
         ),
       ],
-    );
+      );
   }
 }
 
-class ChatMessage {
-  final String text;
-  final bool isUser;
 
-  ChatMessage(this.text, this.isUser);
-}
-
-class BPReading {
-  final DateTime date;
-  final int systolic;
-  final int diastolic;
-
-  BPReading(this.date, this.systolic, this.diastolic);
-}

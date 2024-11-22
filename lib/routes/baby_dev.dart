@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:google_fonts/google_fonts.dart';
+import '../widgets/navigation_config.dart';
 
 class PregnancyTracker extends StatefulWidget {
   const PregnancyTracker({Key? key}) : super(key: key);
@@ -10,6 +12,7 @@ class PregnancyTracker extends StatefulWidget {
 
 class _PregnancyTrackerState extends State<PregnancyTracker> {
   int _currentWeek = 1;
+  int _currentIndex = 0;
   DateTime? _dueDate;
   final TextEditingController _weekController = TextEditingController();
   
@@ -182,18 +185,11 @@ class _PregnancyTrackerState extends State<PregnancyTracker> {
                         ],
                       ),
                     ),
-                    // Placeholder for weekly development image
-                    Container(
+                    Image.asset(
+                      'assets/images/embryo.jpeg',
                       height: 200,
                       width: double.infinity,
-                      color: Colors.grey[200],
-                      child: Center(
-                        child: Icon(
-                          Icons.child_care,
-                          size: 100,
-                          color: Colors.grey[400],
-                        ),
-                      ),
+                      fit: BoxFit.cover,
                     ),
                   ],
                 ),
@@ -202,7 +198,14 @@ class _PregnancyTrackerState extends State<PregnancyTracker> {
           ),
         ],
       ),
+      bottomNavigationBar: NavigationConfig().buildBottomNav(context),
     );
+  }
+
+  void _onBottomNavigationTap(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
   }
 
   @override

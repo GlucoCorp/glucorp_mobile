@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import '../widgets/navigation_config.dart';
 // Community Page
-class CommunityPage extends StatelessWidget {
+class CommunityPage extends StatefulWidget {
+  @override
+  _CommunityPageState createState() => _CommunityPageState();
+}
+
+class _CommunityPageState extends State<CommunityPage> {
+  int _currentIndex = 0;
+
+  void _onBottomNavigationTap(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -110,6 +122,7 @@ class CommunityPage extends StatelessWidget {
         backgroundColor: Colors.pink[300],
         child: Icon(Icons.add),
       ),
+       bottomNavigationBar: NavigationConfig().buildBottomNav(context),
     );
   }
 }

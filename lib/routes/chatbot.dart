@@ -1,6 +1,7 @@
 // Chatbot Page
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../widgets/navigation_config.dart';
 
 class ChatbotPage extends StatefulWidget {
   @override
@@ -22,6 +23,14 @@ class _ChatbotPageState extends State<ChatbotPage> {
       false,
     ),
   ];
+
+  int _currentIndex = 0;
+
+  void _onBottomNavigationTap(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -127,6 +136,7 @@ class _ChatbotPageState extends State<ChatbotPage> {
           ),
         ],
       ),
+      bottomNavigationBar: NavigationConfig().buildBottomNav(context),
     );
   }
 }
